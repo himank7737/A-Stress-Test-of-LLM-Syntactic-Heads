@@ -1,0 +1,6 @@
+name: gpt2_hi
+model_family: gpt2
+model_path: ./mgpt_hi_finetuned
+dataset_path: data/garden_path_hi.jsonl
+n_layers: 12
+n_heads: 12

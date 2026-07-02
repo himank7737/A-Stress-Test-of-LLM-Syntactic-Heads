@@ -1,0 +1,20 @@
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# data / model artifacts (too big for git, fetch/regenerate instead)
+data/*.conllu
+data/*.jsonl
+*.bin
+*.safetensors
+gpt2_en_finetuned/
+mgpt_hi_finetuned/
+results/
+figures/
+
+# env
+.env
+.DS_Store
