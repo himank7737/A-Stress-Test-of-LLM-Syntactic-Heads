@@ -13,7 +13,7 @@ Course project for CGS410.
 
 **Authors:** Himank Khandelwal, Virender, Sanchit Hamane, Kshitij Pramod Ramrekkar
 
-## TL;DR of the result
+## TLDR of the result
 
 All four experiments show a significant negative correlation between token surprisal and syntactic
 head confidence (p < .001 everywhere). GPT-2 has a much stronger coupling (r ≈ -0.40) than Llama
@@ -23,14 +23,7 @@ recover ("structural poisoning"), while Llama-English actually spikes at the dis
 before dropping - looks like it's throwing extra compute at the hard part rather than just
 breaking.
 
-| Experiment | Model | Lang | Pearson r | Spearman ρ | n | Syn. heads |
-|---|---|---|---|---|---|---|
-| GPT-2 English | GPT-2 | EN | -0.4049 *** | -0.4252 *** | 7,148 | 10/144 |
-| GPT-2 Hindi | mGPT | HI | -0.3684 *** | -0.3573 *** | 7,676 | 10/144 |
-| Llama-3.2-3B Eng. | Llama | EN | -0.1420 *** | -0.1867 *** | 6,602 | 10/672 |
-| Llama-3.2-3B Hin. | Llama | HI | -0.1386 *** | -0.2592 *** | 7,676 | 18/672 |
-
-Full writeup with all the figures is in `paper/` (the PDF we submitted for the course).
+Full writeup with all the figures is in `paper/`.
 
 ## Why this is harder than it sounds
 
@@ -62,12 +55,6 @@ src/
   pipeline/         run_experiment.py, glues everything together for one (model, language) run
   viz/              regenerates Figures 1-5 from the report
 configs/            one yaml per experiment
-```
-
-## Setup
-
-```bash
-pip install -r requirements.txt
 ```
 
 You'll need a Hugging Face token with access to `meta-llama/Llama-3.2-3B` for the Llama
@@ -106,8 +93,8 @@ python -m src.data_prep.extract_garden_path \
 ```
 
 Treebanks used:
-- English: [UD English Web Treebank](https://universaldependencies.org/) (Silveira et al., 2014)
-- Hindi: [Hindi Dependency Treebank](https://universaldependencies.org/) (Bhat et al., 2017)
+- English: [UD English Web Treebank](https://universaldependencies.org/) 
+- Hindi: [Hindi Dependency Treebank](https://universaldependencies.org/) 
 
 ## Running an experiment
 
@@ -139,14 +126,8 @@ python -m src.viz.plots --results results/gpt2_en --out figures/
 
 ## References
 
-Key ones - full list is in the paper.
-
 - Clark et al. (2019), *What does BERT look at?*, BlackboxNLP
 - Hale (2001), *A probabilistic Earley parser as a psycholinguistic model*, NAACL
 - Levy (2008), *Expectation-based syntactic comprehension*, Cognition
 - Tenney et al. (2019), *BERT rediscovers the classical NLP pipeline*, ACL
 - Nivre et al. (2020), *Universal Dependencies v2*, LREC
-
-## License
-
-MIT - see `LICENSE`.
