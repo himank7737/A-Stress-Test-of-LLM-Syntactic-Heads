@@ -25,21 +25,21 @@ breaking.
 
 Full writeup with all the figures is in `paper/`.
 
-## Why this is harder than it sounds
+## Fixes We Did
 
-The obvious approach - just grab attention weights and see if they line up with the gold UD arc -
+The obvious approach   just grab attention weights and see if they line up with the gold UD arc  
 runs into a few problems we had to explicitly correct for:
 
 1. **Causal masking kills most of the arcs.** GPT-2 (and any decoder-only model) can only attend
    backwards. That means it structurally cannot attend to  63% of English UD arcs and  94.6% of
    Hindi ones, because the dependent often comes before the head in the sentence. If you don't fix
-   this, you're mostly measuring "can the model see this token at all," not syntax. We fix it by
+   this, you're mostly measuring  can the model see this token at all, not syntax. We fix it by
    flipping the query direction for right-pointing arcs (see `src/analysis/arc_coverage.py`).
 
 2. **Not every head is a syntax head.** Most attention heads are doing something else entirely
    (positional stuff, previous-token heads, whatever). We isolate the heads that actually track UD
    structure above a random baseline + 2σ before computing anything (`head_identification.py`).
-   This drops GPT-2 down to 10/144 heads and Llama down to 10-18/672.
+   This drops GPT 2 down to 10/144 heads and Llama down to 10-18/672.
 
 3. **Root tokens are structurally different from everything else** and they were dragging the
    correlation around. We residualize both surprisal and confidence on `is_root` via OLS before
