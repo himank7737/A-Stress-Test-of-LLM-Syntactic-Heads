@@ -6,12 +6,12 @@ classic "the horse raced past the barn fell" type of sentence that forces you to
 through) and check whether the attention heads that track dependency relations lose confidence when
 surprisal spikes.
 
-We run this across two model families - GPT-2 (117M) and Llama-3.2-3B - and two typologically
-different languages, English (SVO) and Hindi (SOV), so four experiments total.
+We run this across two model families   GPT-2 (117M) and Llama-3.2-3B  and two different languages
+ English (SVO) and Hindi (SOV), so four experiments total.
 
 Course project for CGS410.
 
-**Authors:** Himank Khandelwal, Virender, Sanchit Hamane, Kshitij Pramod Ramrekkar
+**team:** Himank Khandelwal, Virender, Sanchit Hamane, Kshitij Pramod Ramrekkar
 
 ## TLDR of the result
 
@@ -19,7 +19,7 @@ All four experiments show a significant negative correlation between token surpr
 head confidence (p < .001 everywhere). GPT-2 has a much stronger coupling (r ≈ -0.40) than Llama
 (r ≈ -0.14), which is consistent with larger models spreading syntactic information across more
 heads instead of concentrating it. GPT-2 also crashes at the disambiguation point and doesn't fully
-recover ("structural poisoning"), while Llama-English actually spikes at the disambiguation word
+recover , while Llama-English actually spikes at the disambiguation word
 before dropping - looks like it's throwing extra compute at the hard part rather than just
 breaking.
 
@@ -31,7 +31,7 @@ The obvious approach - just grab attention weights and see if they line up with 
 runs into a few problems we had to explicitly correct for:
 
 1. **Causal masking kills most of the arcs.** GPT-2 (and any decoder-only model) can only attend
-   backwards. That means it structurally cannot attend to ~63% of English UD arcs and ~94.6% of
+   backwards. That means it structurally cannot attend to  63% of English UD arcs and  94.6% of
    Hindi ones, because the dependent often comes before the head in the sentence. If you don't fix
    this, you're mostly measuring "can the model see this token at all," not syntax. We fix it by
    flipping the query direction for right-pointing arcs (see `src/analysis/arc_coverage.py`).
