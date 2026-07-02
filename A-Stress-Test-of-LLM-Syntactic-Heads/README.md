@@ -114,15 +114,15 @@ python -m src.viz.plots --results results/gpt2_en --out figures/
 
 ## Limitations (being upfront about these)
 
-- The bidirectional arc fix is a patch, not a real fix - it's still asymmetric compared to what a
+- The bidirectional arc fix is a patch, not a real fix  it's still asymmetric compared to what a
   true bidirectional encoder like BERT would give you.
 - Attention weight is a proxy for "syntactic processing," not the thing itself. High attention to
   the right token doesn't prove the model is using that information downstream.
-- GPT-2 and Llama use different tokenizers and were trained on very different corpora, so the
-  model-size comparison is confounded with pretraining-data differences. We can't fully separate
+- GPT 2 and Llama use different tokenizers and were trained on very different corpora, so the
+  model size comparison is confounded with pretraining data differences. We can't fully separate
   "bigger model" from "different training run."
-- The Hindi Llama numbers use the base multilingual model with no Hindi-specific fine-tuning, so
-  it's not an apples-to-apples comparison with the Hindi GPT-2 (mGPT) run, which was fine-tuned.
+- The Hindi Llama numbers use the base multilingual model with no Hindi-specific fine tuning, so
+  it's not an apples to apples comparison with the Hindi GPT-2 (mGPT) run, which was fine-tuned.
 
 ## References
 
