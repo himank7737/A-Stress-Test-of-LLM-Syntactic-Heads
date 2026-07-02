@@ -63,8 +63,8 @@ experiments. Export it before running anything:
 export HF_TOKEN=your_token_here
 ```
 
-GPU is basically mandatory - Llama-3.2-3B is loaded 4-bit quantized (NF4) but you still want a GPU
-with at least ~8GB free. GPT-2 / mGPT fine-tuning will run on CPU but it'll take forever.
+GPU is basically mandatory   Llama-3.2-3B is loaded 4-bit quantized but you still want a GPU
+with at least  8GB free. GPT-2 / mGPT fine-tuning will run on CPU but it'll take forever.
 
 ## Fine-tuning the base models
 
@@ -73,15 +73,12 @@ python -m src.training.finetune_gpt2_en
 python -m src.training.finetune_mgpt_hi
 ```
 
-Llama isn't fine-tuned - we use it with native weights for both languages (see `load_llama.py`),
-partly because we didn't have the compute budget and partly because that's a fairer test of what
-the model already knows.
+Llama isn't fine-tuned   we use it with native weights for both languages (see `load_llama.py`),
 
 ## Building the garden-path dataset
 
 We didn't hand-annotate anything. `extract_garden_path.py` walks a CoNLL-U treebank and flags
-sentences matching known ambiguity patterns (reduced relative clauses, NP/Z ambiguity, i.e.
-subordinate clauses without an overt complementizer, and a couple of others) - same pipeline for
+sentences matching known ambiguity patterns - same pipeline for
 both English and Hindi, no manual labeling needed.
 
 ```bash
