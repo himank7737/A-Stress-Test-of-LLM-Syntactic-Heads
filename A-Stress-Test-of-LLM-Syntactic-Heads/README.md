@@ -1,12 +1,11 @@
 # A Stress Test of LLM Syntactic Heads
 
 Does the syntactic attention inside a language model actually hold up when the input gets hard to
-predict? That's the question this project is trying to answer. We take garden-path sentences (the
-classic "the horse raced past the barn fell" type of sentence that forces you to re-parse mid-way
-through) and check whether the attention heads that track dependency relations lose confidence when
+predict? That's the question this project is trying to answer. We take garden-path sentences 
+and check whether the attention heads that track dependency relations lose confidence when
 surprisal spikes.
 
-We run this across two model families   GPT-2 (117M) and Llama-3.2-3B  and two different languages
+We run this across two model families   GPT-2 (117M) and Llama 3.2 3B  and two different languages
  English (SVO) and Hindi (SOV), so four experiments total.
 
 Course project for CGS410.
